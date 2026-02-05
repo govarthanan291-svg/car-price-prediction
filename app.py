@@ -35,7 +35,6 @@ present_price = st.number_input("💵 Showroom Price (in lakhs)", min_value=0.0,
 kms_driven = st.number_input("🛣️ Kilometers Driven", min_value=0, value=50000)
 owner = st.selectbox("👤 Number of Previous Owners", [0,1,2,3])
 fuel_type = st.selectbox("⛽ Fuel Type", ["Petrol", "Diesel", "CNG"])
-seller_type = st.selectbox("🏪 Seller Type", ["Dealer", "Individual"])
 transmission = st.selectbox("⚙️ Transmission Type", ["Manual", "Automatic"])
 
 # ----------------------------------
@@ -44,7 +43,6 @@ transmission = st.selectbox("⚙️ Transmission Type", ["Manual", "Automatic"])
 fuel_petrol = 1 if fuel_type == "Petrol" else 0
 fuel_diesel = 1 if fuel_type == "Diesel" else 0
 
-seller_individual = 1 if seller_type == "Individual" else 0
 transmission_manual = 1 if transmission == "Manual" else 0
 
 # ----------------------------------
@@ -58,10 +56,9 @@ if st.button("🔮 Predict Car Price"):
                              owner,
                              fuel_diesel,
                              fuel_petrol,
-                             seller_individual,
                              transmission_manual]])
 
     prediction = model.predict(input_data)[0]
 
     st.success(f"💰 Estimated Car Price: ₹ {round(prediction,2)} Lakhs")
-
+Finisher Praveena cabin
